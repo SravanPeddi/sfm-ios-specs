@@ -1,0 +1,5 @@
+query KnowledgeByItemCode($code: String!) {
+  knowledgeByItemCode(code: $code) {
+    code
+  }
+}

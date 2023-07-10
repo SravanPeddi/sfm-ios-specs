@@ -1,0 +1,1841 @@
+directive @defer(label: String, if: Boolean! = true) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+input AddProductAttachmentInput {
+  language: String
+  name: String
+  size: Int
+  type: String
+  url: String
+}
+
+input AddProductCategoryAttachmentInput {
+  language: String
+  name: String
+  size: Int
+  type: String
+  url: String
+}
+
+input AddProductCategoryCommentInput {
+  comment: String
+  type: String
+}
+
+input ApplicationLabelCriteriaInput {
+  code: String
+  lastAccessedTime: String
+}
+
+input ApplicationLabelIntlInput {
+  active: String
+  description: String
+  language: String
+  name: String
+}
+
+type ApplicationLabelIntlResponse {
+  active: String
+  createdAt: LocalDateTime
+  createdBy: String
+  description: String
+  language: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  name: String
+}
+
+type ApplicationLabelResponse {
+  active: String
+  application: String
+  code: String
+  createdAt: LocalDateTime
+  feature: String
+  intls: [ApplicationLabelIntlResponse]
+  lastAccessedTime: String
+  modifiedAt: LocalDateTime
+}
+
+type ApplicationMessage {
+  active: String
+  application: String
+  code: String!
+  createdAt: LocalDateTime
+  feature: String
+  intls: [ApplicationMessageIntl]
+  lastAccessedTime: String
+  modifiedAt: LocalDateTime
+}
+
+input ApplicationMessageCriteriaInput {
+  code: String
+  lastAccessedTime: String
+}
+
+input ApplicationMessageInput {
+  active: String
+  application: String
+  code: String!
+  feature: String
+  intls: [ApplicationMessageIntlInput]
+}
+
+type ApplicationMessageIntl {
+  active: String
+  createdAt: LocalDateTime
+  language: String
+  longDesc: String
+  modifiedAt: LocalDateTime
+  shortDesc: String
+}
+
+input ApplicationMessageIntlInput {
+  active: String
+  language: String
+  longDesc: String
+  shortDesc: String
+}
+
+type Attribute {
+  currency: String
+  preferred: String
+  region: String
+  servicePreference: String
+  signatureURI: String
+  websiteURL: String
+}
+
+input AttributeInput {
+  currency: String
+  preferred: String
+  region: String
+  servicePreference: String
+  signatureURI: String
+  websiteURL: String
+}
+
+"""BigDecimal Scalar"""
+scalar BigDecimal
+
+type Brand {
+  code: String!
+  intls: [BrandIntl]
+  skins: [BrandSkin]
+}
+
+input BrandInput {
+  code: String!
+  intls: [BrandIntlInput]
+  skins: [BrandSkinInput]
+}
+
+type BrandIntl {
+  description: String
+  locale: Locale
+  name: String
+}
+
+input BrandIntlInput {
+  description: String
+  language: String
+  name: String
+}
+
+type BrandSkin {
+  name: String
+  type: String
+  url: String
+}
+
+input BrandSkinInput {
+  name: String
+  type: String
+  url: String
+}
+
+input BusinessEntityBrandInput {
+  active: String
+  brand: String
+}
+
+type BusinessEntityBrandResponse {
+  active: String
+  brand: String
+}
+
+input BusinessEntityIntlInput {
+  description: String
+  language: String
+  name: String
+}
+
+type BusinessEntityIntlResponse {
+  description: String
+  language: String
+  name: String
+}
+
+type BusinessEntityResponse {
+  attribute: Attribute
+  brands: [BusinessEntityBrandResponse]
+  code: String!
+  createdAt: LocalDateTime
+  createdBy: String
+  intls: [BusinessEntityIntlResponse]
+  locations: [LocationResponse]
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  parent: ParentBusinessEntityResponse
+  reference: String
+  status: String
+  subType: String
+  type: String!
+}
+
+""" This is the common Criteria Response for all Cache Services"""
+type CacheCriteriaResponse {
+  commitCount: Int
+  criteria: String
+  endDate: LocalDateTime
+  entityName: String
+  fromEntityID: Int
+  inClauseIDs: String
+  inClauseIDsList: [String]
+  jpqlQuery: String
+  recordsCount: Int
+  reload: Boolean
+  startDate: LocalDateTime
+  toEntityID: Int
+}
+
+input CatalogCriteriaInput {
+  code: String
+  lastAccessedTime: String
+}
+
+input CatalogItemIntlInput {
+  description: String
+  language: String!
+  name: String!
+}
+
+type CatalogItemIntlResponse {
+  description: String
+  language: String
+  name: String
+}
+
+type CatalogItemResponse {
+  active: String
+  code: String
+  createdAt: LocalDateTime
+  defaultEntry: String
+  feature: String
+  intls: [CatalogItemIntlResponse]
+  modifiedAt: LocalDateTime
+  orderSequence: Int
+  serviceDefaultEntry: String
+}
+
+type CatalogResponse {
+  active: String
+  application: String
+  code: String!
+  createdAt: LocalDateTime
+  createdBy: String
+  feature: String
+  items: [CatalogItemResponse]
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  sortBy: String
+}
+
+type ContactResponse {
+  active: String
+  alternateEmail1: String
+  alternateEmail2: String
+  alternatePhone1: String
+  alternatePhone1Ext: String
+  alternatePhone2: String
+  alternatePhone2Ext: String
+  alternatePhone3: String
+  alternatePhone3Ext: String
+  certificationInfo: String
+  code: String
+  contactMethod: String
+  department: String
+  email: String
+  firstName: String
+  lastName: String
+  location: String
+  loginId: String
+  middleName: String
+  phone: String
+  phoneExt: String
+  titleCode: String
+  type: String
+}
+
+input CountryInput {
+  active: String
+  code: String!
+  code2: String
+  intls: [CountryIntlInput]
+}
+
+type CountryIntl {
+  active: String
+  language: String
+  name: String
+}
+
+input CountryIntlInput {
+  active: String
+  language: String!
+  name: String!
+}
+
+type CountryResponse {
+  active: String
+  code: String!
+  code2: String
+  intls: [CountryIntl]
+}
+
+input CreateApplicationLabelInput {
+  active: String
+  application: String
+  code: String
+  feature: String
+  intls: [ApplicationLabelIntlInput]
+}
+
+input CreateBusinessEntityInput {
+  attribute: AttributeInput
+  brands: [BusinessEntityBrandInput]
+  code: String!
+  intls: [BusinessEntityIntlInput]
+  parentBECode: String
+  parentBEType: String
+  reference: String
+  status: String
+  subType: String
+  type: String!
+}
+
+input CreateCatalogInput {
+  active: String
+  application: String
+  code: String!
+  feature: String
+
+  """ list of value form the catalog "CatalogSortOptions"
+  """
+  sortBy: String
+}
+
+input CreateCatalogItemInput {
+  active: String
+  code: String!
+  defaultEntry: String
+  feature: String
+  intls: [CatalogItemIntlInput]
+  orderSequence: Int
+  serviceDefaultEntry: String
+}
+
+type CreateCatalogResponse {
+  active: String
+  application: String
+  code: String!
+  createdAt: LocalDateTime
+  createdBy: String
+  feature: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  sortBy: String
+}
+
+input CreateContactInput {
+  active: String
+  alternateEmail1: String
+  alternateEmail2: String
+  alternatePhone1: String
+  alternatePhone1Ext: String
+  alternatePhone2: String
+  alternatePhone2Ext: String
+  alternatePhone3: String
+  alternatePhone3Ext: String
+  certificationInfo: String
+  code: String
+  contactMethod: String
+  department: String
+  email: String
+  firstName: String
+  lastName: String
+  loginId: String
+  middleName: String
+  phone: String
+  phoneExt: String
+  titleCode: String
+  type: String
+}
+
+input CreateEntityLinkRequest {
+  active: String
+  category: String
+  code: String
+  definitions: [EntityLinkDefinition]
+  externalComment: EntityLinkComment
+  internalComment: EntityLinkComment
+  priority: String
+  subCategory: String
+  subType: String
+  type: String
+}
+
+input CreateEntityListRequest {
+  attributes: [EntityListAttribute]
+  category: String
+  code: String
+  externalComment: EntityListComment
+  internalComment: EntityListComment
+  type: String
+}
+
+input createLocaleInput {
+  active: String
+  code: String!
+  name: String!
+}
+
+input CreateLocationInput {
+  address1: String
+  address2: String
+  address3: String
+  address4: String
+  alternateEmail1: String
+  alternateEmail2: String
+  alternatePhone1: String
+  alternatePhone1Ext: String
+  alternatePhone2: String
+  alternatePhone2Ext: String
+  alternatePhone3: String
+  alternatePhone3Ext: String
+  city: String
+  code: String
+  country: String
+  county: String
+  email: String
+  language: String
+  latitude: String
+  longitude: String
+  phone: String
+  phoneExt: String
+  preferred: String
+  state: String
+  type: String
+  url: String
+  zip: String
+  zipExt: String
+}
+
+input CreateProductCategoryInput {
+  code: String!
+  intls: [CreateProductCategoryIntlInput]
+  relations: [CreateProductCategoryRelationInput]
+  status: String
+}
+
+input CreateProductCategoryIntlInput {
+  description: String
+  descriptionLink: String
+  language: String
+  name: String
+}
+
+input CreateProductCategoryRelationInput {
+  code: String
+  relationType: String
+}
+
+type CreateProductCategoryResponse {
+  code: String!
+  intls: [ProductCategoryIntlResponse]
+  relations: [ProductCategoryRelationResponse]
+  status: String
+}
+
+input CreateProductPriceInput {
+  currency: String
+  endDate: LocalDate
+  listPrice: String
+  netPrice: String
+  startDate: LocalDate
+  unitPrice: String
+}
+
+input CreatePublicationInput {
+  category: String
+  code: String
+
+  """ Send the actual cover page file name"""
+  coverpageFileName: String
+
+  """ Send the generated file name"""
+  coverpageUri: String
+  indexFileType: String
+  indexType: String
+  indexUri: String
+  intls: [PublicationIntlInput]
+  metadata: [PublicationMetadataInput]
+  publicScope: String
+  publicationSize: Int
+  source: String
+
+  """ Send the actual file name"""
+  sourceFileName: String
+
+  """ Send the generated file name"""
+  sourceUri: String
+  type: String
+}
+
+""" This is the common Criteria Input for all Cache Services"""
+input CriteriaInput {
+  """ By default commit Count is 100"""
+  commitCount: Int! = 100
+  criteria: String
+  endDate: LocalDateTime
+  fromEntityID: Int
+  inClauseIDs: String
+  jpqlQuery: String
+
+  """ By default reload is false."""
+  reload: Boolean! = false
+  startDate: LocalDateTime
+  toEntityID: Int
+}
+
+input criteriaListInput {
+  type: String!
+  value: String!
+}
+
+type criteriaListResponse {
+  type: String!
+  value: String!
+}
+
+"""Date Scalar"""
+scalar Date
+
+"""DateTime Scalar"""
+scalar DateTime
+
+input DefinitionAttribute {
+  affixFilterKey: String
+  affixFilterValue: String
+  attributeCriteria: String
+  attributeReference: String
+  attributes: [DefinitionAttribute]
+  condition: String
+  criteriaCondition: String
+  delimiter: String
+  domainPath: String
+  filterCondition: String
+  filterKey: String
+  filterValue: String
+  inboundValue: String
+  label: String
+  name: String
+  outboundValue: String
+  rangeSize: Long
+  searchOnRange: String
+  sortOrder: String
+  type: String
+  value: String
+  values: [LinkAttributeValue]
+}
+
+type DefinitionAttributeResponse {
+  affixFilterKey: String
+  affixFilterValue: String
+  attributeCriteria: String
+  attributeReference: String
+  attributes: [DefinitionAttributeResponse]
+  condition: String
+  criteriaCondition: String
+  delimiter: String
+  domainPath: String
+  filterCondition: String
+  filterKey: String
+  filterValue: String
+  inboundValue: String
+  label: String
+  name: String
+  outboundValue: String
+  rangeSize: Long
+  searchOnRange: String
+  sortOrder: String
+  type: String
+  value: String
+  values: [LinkAttributeValueResponse]
+}
+
+type DeleteApplicationLabelResponse {
+  code: String!
+}
+
+type DeleteAppMessageResponse {
+  code: String!
+}
+
+type DeleteBrandResponse {
+  code: String
+}
+
+type DeleteBusinessEntityContactResponse {
+  code: String!
+  entityCode: String!
+  type: String!
+}
+
+type DeleteBusinessEntityLocationResponse {
+  code: String!
+  entityCode: String!
+  type: String!
+}
+
+type DeleteBusinessEntityResponse {
+  code: String!
+  type: String!
+}
+
+type DeleteCountryResponse {
+  code: String!
+}
+
+type DeleteEntityLinkResponse {
+  code: String
+}
+
+type DeleteEntityListResponse {
+  code: String
+}
+
+type DeleteEntityXrefResponse {
+  id: Int
+  type: String
+}
+
+type DeleteLocaleResponse {
+  code: String
+}
+
+type DeletePartAttachmentResponse {
+  code: String
+  id: Long
+}
+
+type DeletePartAttributeResponse {
+  code: String
+  id: Long
+}
+
+type DeletePartResponse {
+  code: String
+}
+
+type DeleteProductAttachmentResponse {
+  id: Long
+}
+
+type DeleteProductCategoryAttachmentResponse {
+  id: Int
+}
+
+type DeleteProductCategoryCommentResponse {
+  id: String
+}
+
+type DeleteProductCategoryResponse {
+  code: String
+}
+
+type DeleteProductPriceResponse {
+  id: Long
+}
+
+type DeleteStateResponse {
+  code: String!
+  countryCode: String!
+}
+
+input EntityLinkComment {
+  comment: String
+  type: String
+}
+
+type EntityLinkCommentResponse {
+  comment: String
+  type: String
+}
+
+input EntityLinkDefinition {
+  criterias: [DefinitionAttribute]
+}
+
+type EntityLinkDefinitionResponse {
+  criterias: [DefinitionAttributeResponse]
+}
+
+type EntityLinkResponse {
+  active: String
+  category: String
+  code: String
+  definitions: [EntityLinkDefinitionResponse]
+  externalComments: [EntityLinkCommentResponse]
+  internalComments: [EntityLinkCommentResponse]
+  priority: String
+  subCategory: String
+  subType: String
+  type: String
+}
+
+input EntityListAttribute {
+  attributeCode: String
+  attributeValue: String
+}
+
+type EntityListAttributeResponse {
+  attributeCode: String
+  attributeValue: String
+}
+
+input EntityListComment {
+  comment: String
+  type: String
+}
+
+type EntityListCommentResponse {
+  comment: String
+  type: String
+}
+
+type EntityListResponse {
+  attributes: [EntityListAttributeResponse]
+  category: String
+  code: String
+  externalComments: [EntityListCommentResponse]
+  internalComments: [EntityListCommentResponse]
+  type: String
+}
+
+input EntityXrefInput {
+  active: String
+  application: String
+  criteriaList: [criteriaListInput!]
+  feature: String
+  resultList: [EntityXrefResult!]
+  type: String!
+}
+
+type EntityXrefResponse {
+  active: String
+  application: String
+  criteriaList: [criteriaListResponse]
+  feature: String
+  resultList: [XrefResultResponse]
+  type: String
+}
+
+input EntityXrefResult {
+  code: String!
+  defaultEntry: String
+  name: String!
+  serviceDefaultEntry: String
+}
+
+input LinkAttributeValue {
+  field: String
+  key: Long
+  name: String
+  value: String
+}
+
+type LinkAttributeValueResponse {
+  field: String
+  key: Long
+  name: String
+  value: String
+}
+
+"""Local Date Scalar"""
+scalar LocalDate
+
+"""Local DateTime Scalar"""
+scalar LocalDateTime
+
+type Locale {
+  code: String!
+}
+
+type LocaleResponse {
+  active: String
+  code: String!
+  createdAt: LocalDateTime
+  createdBy: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  name: String!
+}
+
+type LocationResponse {
+  address1: String
+  address2: String
+  address3: String
+  address4: String
+  alternateEmail1: String
+  alternateEmail2: String
+  alternatePhone1: String
+  alternatePhone1Ext: String
+  alternatePhone2: String
+  alternatePhone2Ext: String
+  alternatePhone3: String
+  alternatePhone3Ext: String
+  city: String
+  code: String
+  country: String
+  county: String
+  createdAt: LocalDateTime
+  createdBy: String
+  email: String
+  language: String
+  latitude: String
+  longitude: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  phone: String
+  phoneExt: String
+  preferred: String
+  state: String
+  type: String
+  url: String
+  zip: String
+  zipExt: String
+}
+
+"""A 64-bit signed integer"""
+scalar Long
+
+type Manufacturer {
+  code: String
+  type: String
+}
+
+input ManufacturerInput {
+  code: String
+  type: String
+}
+
+type Mutation {
+  """ To create a knowledge publication"""
+  createKnowledgePublication(publication: CreatePublicationInput!): PublicationResponse
+
+  """ To delete a knowledge publication"""
+  deleteKnowledgePublication(code: String!): UpdatePublicationResponse
+
+  """ To on-hold a knowledge publication"""
+  onHoldKnowledgePublication(code: String!): UpdatePublicationResponse
+
+  """ To publish a knowledge publication"""
+  publishKnowledgePublication(code: String!, publication: UpdatePublicationInput!): UpdatePublicationResponse
+
+  """ To republish a knowledge publication"""
+  republishKnowledgePublication(code: String!, publication: UpdatePublicationInput!): PublicationResponse
+
+  """ To update a knowledge publication"""
+  updateKnowledgePublication(code: String!, publication: UpdatePublicationInput!): PublicationResponse
+
+  """ To add a part attachment"""
+  addPartAttachment(attachment: PartAttachmentInput!, code: String!): PartAttachmentResponse
+
+  """ To create a product attachment"""
+  addProductAttachment(attachment: AddProductAttachmentInput!, brand: String!, productCode: String!): ProductAttachmentResponse
+
+  """ To create a product category attachment"""
+  addProductCategoryAttachment(attachment: AddProductCategoryAttachmentInput!, code: String!): ProductCategoryAttachmentResponse
+
+  """ To create a product category comment"""
+  addProductCategoryComment(code: String!, comment: AddProductCategoryCommentInput!): ProductCategoryCommentResponse
+
+  """ To create a brand"""
+  createBrand(brand: BrandInput!): Brand
+
+  """ To create a Business Entity"""
+  createBusinessEntity(businessEntity: CreateBusinessEntityInput!): BusinessEntityResponse
+
+  """ To create a Business Entity Contact"""
+  createBusinessEntityContact(contact: CreateContactInput!, entityCode: String!, location: String!, type: String!): ContactResponse
+
+  """ To create a Business Entity Location"""
+  createBusinessEntityLocation(entityCode: String!, location: CreateLocationInput!, type: String!): LocationResponse
+
+  """ To create a part attribute"""
+  createPartAttribute(attribute: PartAttributeInput!, code: String!): PartAttributeResponse
+
+  """ To add a part price"""
+  createPartPrice(code: String!, price: PartPriceInput!): PartPriceResponse
+
+  """ To create a product category"""
+  createProductCategory(category: CreateProductCategoryInput!): CreateProductCategoryResponse
+
+  """ To create a product price"""
+  createProductPrice(brand: String!, price: CreateProductPriceInput!, productCode: String!): ProductPriceResponse
+
+  """ To delete a brand by code"""
+  deleteBrand(code: String!): DeleteBrandResponse
+
+  """ To delete a Business Entity"""
+  deleteBusinessEntity(code: String!, type: String!): DeleteBusinessEntityResponse
+
+  """ To delete a Business Entity Contact"""
+  deleteBusinessEntityContact(code: String!, entityCode: String!, entityType: String!): DeleteBusinessEntityContactResponse
+
+  """ To delete a Business Entity Location"""
+  deleteBusinessEntityLocation(code: String!, entityCode: String!, type: String!): DeleteBusinessEntityLocationResponse
+
+  """ To delete a product category attachment"""
+  deleteCategoryAttachmentById(id: Int): DeleteProductCategoryAttachmentResponse
+
+  """ To delete a product category comment"""
+  deleteCategoryCommentById(id: Int): DeleteProductCategoryCommentResponse
+
+  """ To delete part by code"""
+  deletePart(code: String!): DeletePartResponse
+
+  """ To delete a part attachment by id and part code"""
+  deletePartAttachment(code: String!, id: Long!): DeletePartAttachmentResponse
+
+  """ To delete a part attribute by id and part code"""
+  deletePartAttribute(code: String!, id: Long!): DeletePartAttributeResponse
+
+  """ To delete a product attachment"""
+  deleteProductAttachment(code: String!, id: Long!): DeleteProductAttachmentResponse
+
+  """ To delete a product category by code"""
+  deleteProductCategory(code: String!): DeleteProductCategoryResponse
+
+  """ To delete a product price"""
+  deleteProductPrice(code: String!, id: Long!): DeleteProductPriceResponse
+
+  """ To save a product"""
+  saveProduct(product: ProductInput!): Product
+
+  """ To update a brand by code"""
+  updateBrand(brand: BrandInput!, code: String!): Brand
+
+  """ To update a Business Entity"""
+  updateBusinessEntity(businessEntity: UpdateBusinessEntityInput!, code: String!, type: String!): BusinessEntityResponse
+
+  """ To update a Business Entity Contact"""
+  updateBusinessEntityContact(code: String!, contact: UpdateContactInput!, entityCode: String!, entityType: String!, location: String!): ContactResponse
+
+  """ To update a Business Entity Location"""
+  updateBusinessEntityLocation(code: String!, entityCode: String!, location: UpdateLocationInput!, type: String!): LocationResponse
+
+  """ To update a part attachment by id and part code"""
+  updatePartAttachment(attachment: PartAttachmentInput!, code: String!, id: Long!): PartAttachmentResponse
+
+  """ To update a part attribute by code"""
+  updatePartAttribute(attribute: PartAttributeInput!, code: String!, id: Long!): PartAttributeResponse
+
+  """ To update a part price by id and part code"""
+  updatePartPrice(code: String!, id: Long!, price: PartPriceInput!): PartPriceResponse
+
+  """ To update a product"""
+  updateProduct(product: ProductInput!): Product
+
+  """ To update a product attachment"""
+  updateProductAttachment(attachment: UpdateProductAttachmentInput!, attachmentId: Long!, brand: String!, productCode: String!): ProductAttachmentResponse
+
+  """ To update a product category by code"""
+  updateProductCategory(category: UpdateProductCategoryInput!, code: String!): UpdateProductCategoryResponse
+
+  """ To update a product category attachment by code"""
+  updateProductCategoryAttachment(attachment: UpdateProductCategoryAttachmentInput!, attachmentId: Int!, code: String!): ProductCategoryAttachmentResponse
+
+  """ To update a product category comment by code"""
+  updateProductCategoryComment(code: String!, comment: UpdateProductCategoryCommentInput!, commentId: Int!): ProductCategoryCommentResponse
+
+  """ To update a product price"""
+  updateProductPrice(brand: String!, price: UpdateProductPriceInput!, priceId: Long!, productCode: String!): ProductPriceResponse
+
+  """ To Clear and Refresh Application Label cache"""
+  clearAndRefreshApplicationLabelCache(criteria: CriteriaInput!): CacheCriteriaResponse
+
+  """ To Clear and Refresh Application Message cache"""
+  clearAndRefreshApplicationMessageCache(criteria: CriteriaInput!): CacheCriteriaResponse
+
+  """ To Clear and Refresh Application Label cache"""
+  clearAndRefreshCatalogCache(criteria: CriteriaInput!): CacheCriteriaResponse
+
+  """ To Clear and Refresh Application Label cache"""
+  clearAndRefreshCountryCache(criteria: CriteriaInput!): CacheCriteriaResponse
+
+  """ To Clear and Refresh Locale cache"""
+  clearAndRefreshLocaleCache(criteria: CriteriaInput!): CacheCriteriaResponse
+
+  """ To Clear and Refresh Xref cache"""
+  clearAndRefreshXrefCache(criteria: CriteriaInput!): CacheCriteriaResponse
+
+  """ To create a catalog"""
+  createCatalog(catalog: CreateCatalogInput!): CreateCatalogResponse
+
+  """ To create a catalog item"""
+  createCatalogItem(catalogCode: String!, item: CreateCatalogItemInput!): CatalogItemResponse
+
+  """ To create a country"""
+  createCountry(country: CountryInput!): CountryResponse
+
+  """ To create a EntityList"""
+  createEntityList(entityList: CreateEntityListRequest!): EntityListResponse
+
+  """ To create an application label"""
+  createLabel(label: CreateApplicationLabelInput!): ApplicationLabelResponse
+
+  """ To create a EntityLink"""
+  createLink(entityLink: CreateEntityLinkRequest!): EntityLinkResponse
+
+  """ To create a locale"""
+  createLocale(locale: createLocaleInput!): LocaleResponse
+
+  """ To create an application message"""
+  createMessage(message: ApplicationMessageInput!): ApplicationMessage
+
+  """ To create a state"""
+  createState(countryCode: String!, state: StateInput!): StateResponse
+
+  """ To create a Xref"""
+  createXref(xref: EntityXrefInput!): EntityXrefResponse
+
+  """ To delete an application message"""
+  deleteAppMsg(code: String!): DeleteAppMessageResponse
+
+  """ To delete a country"""
+  deleteCountry(code: String!): DeleteCountryResponse
+
+  """ To delete a EntityList"""
+  deleteEntityList(code: String!): DeleteEntityListResponse
+
+  """ To delete an application label by Code"""
+  deleteLabelByCode(code: String!): DeleteApplicationLabelResponse
+
+  """ To delete a EntityLink"""
+  deleteLink(code: String!): DeleteEntityLinkResponse
+
+  """ To delete a locale"""
+  deleteLocaleByCode(code: String!): DeleteLocaleResponse
+
+  """ To delete a country"""
+  deleteState(code: String!, countryCode: String!): DeleteStateResponse
+
+  """ To delete a Xref"""
+  deleteXref(id: Int!): DeleteEntityXrefResponse
+
+  """ To update a catalog"""
+  updateCatalog(catalog: UpdateCatalogInput!, code: String!): CatalogResponse
+
+  """ To update a catalog item by catalog code and item"""
+  updateCatalogItem(catalogCode: String!, code: String!, item: UpdateCatalogItemInput!): CatalogItemResponse
+
+  """ To update a country"""
+  updateCountry(country: CountryInput!): CountryResponse
+
+  """ To update a EntityList"""
+  updateEntityList(code: String!, entityList: UpdateEntityListRequest!): EntityListResponse
+
+  """ To update an application label"""
+  updateLabel(code: String!, label: UpdateApplicationLabelInput!): ApplicationLabelResponse
+
+  """ To update a EntityLink"""
+  updateLink(code: String!, entityLink: UpdateEntityLinkRequest!): EntityLinkResponse
+
+  """ To update a locale"""
+  updateLocale(code: String!, locale: updateLocaleInput!): LocaleResponse
+
+  """ To update an application message"""
+  updateMessage(message: ApplicationMessageInput!): ApplicationMessage
+
+  """ To update a state"""
+  updateState(countryCode: String!, state: StateInput!): StateResponse
+
+  """ To update a Xref"""
+  updateXref(id: Int!, xref: EntityXrefInput!): EntityXrefResponse
+}
+
+type ParentBusinessEntityResponse {
+  code: String
+  reference: String
+  status: String
+  subType: String
+  type: String
+}
+
+input PartAttachmentInput {
+  language: String
+  name: String
+  size: Int
+  type: String
+  url: String
+}
+
+type PartAttachmentResponse {
+  id: Long!
+  language: String
+  name: String
+  size: Int
+
+  """CatalogName:PartAttachmentType"""
+  type: String
+  url: String
+}
+
+input PartAttributeInput {
+  active: String
+
+  """CatalogName:PartAttributeType"""
+  code: String
+  group: String
+  groupType: String
+  type: String
+
+  """CatalogName:PartAttributeUOM"""
+  uom: String
+  value: String
+}
+
+type PartAttributeResponse {
+  active: String
+  code: String
+  group: String
+  groupType: String
+  id: Long
+  type: String
+  uom: String
+  value: String
+}
+
+input PartPriceInput {
+  country: String
+  currency: String
+  endDate: LocalDate
+  listPrice: Float
+  netPrice: Float
+  quantity: Float
+  region: String
+  startDate: LocalDate
+  unitPrice: Float
+  uom: String
+}
+
+type PartPriceResponse {
+  country: String
+  createdAt: LocalDateTime
+  createdBy: String
+  currency: String
+  endDate: LocalDate
+  id: Long!
+  listPrice: Float
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  netPrice: Float
+  quantity: Float
+  region: String
+  startDate: LocalDate
+  unitPrice: Float
+  uom: String
+}
+
+type PreSignURLResponse {
+  fileName: String
+  generatedFileName: String
+  presignURL: String
+}
+
+type Product {
+  attachments: [ProductAttachmentResponse]
+  brand: [Brand]
+  category: [ProductCategoryResponse]
+  code: String!
+  externalComment: [ProductComment]
+  industry: String
+  internalComments: [ProductComment]
+  intls: [ProductIntl]
+  isDiagnosable: String
+  isSerialized: String
+  manufacturer: [Manufacturer]
+  prices: [ProductPriceResponse]
+  relations: [ProductRelation]
+  releaseDate: Date
+  status: String
+  type: String
+  url: String
+  usedAs: String
+}
+
+type ProductAttachmentResponse {
+  attachmentId: Long
+  createdAt: LocalDateTime
+  createdBy: String
+  language: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  name: String
+  size: Int
+  type: String
+  url: String
+}
+
+type ProductCategoryAttachmentResponse {
+  attachmentId: Int
+  createdAt: LocalDateTime
+  createdBy: String
+  language: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  name: String
+  size: Int
+  type: String
+  url: String
+}
+
+type ProductCategoryCommentResponse {
+  comment: String
+  commentId: Int
+  createdAt: LocalDateTime
+  createdBy: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  type: String
+}
+
+type ProductCategoryIntlResponse {
+  description: String
+  descriptionLink: String
+  language: String
+  name: String
+}
+
+type ProductCategoryRelationResponse {
+  code: String
+  relationType: String
+}
+
+type ProductCategoryResponse {
+  attachments: [ProductCategoryAttachmentResponse]
+  code: String!
+  createdAt: LocalDateTime
+  createdBy: String
+  externalComments: [ProductCategoryCommentResponse]
+  internalComments: [ProductCategoryCommentResponse]
+  intls: [ProductCategoryIntlResponse]
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  relations: [ProductCategoryRelationResponse]
+  status: String
+}
+
+type ProductComment {
+  comment: String
+  type: String
+}
+
+input ProductCommentInput {
+  comment: String
+  type: String
+}
+
+input ProductInput {
+  brand: [BrandInput]
+  category: [CreateProductCategoryInput]
+  code: String!
+  externalComment: [ProductCommentInput]
+  industry: String
+  internalComments: [ProductCommentInput]
+  intls: [ProductIntlInput]
+  isDiagnosable: String
+  isSerialized: String
+  manufacturer: [ManufacturerInput]
+  relations: [ProductRelationInput]
+  releaseDate: Date
+  status: String
+  type: String
+  url: String
+  usedAs: String
+}
+
+type ProductIntl {
+  description: String
+  descriptionLink: String
+  language: String
+  name: String
+}
+
+input ProductIntlInput {
+  description: String
+  descriptionLink: String
+  language: String
+  name: String
+}
+
+type ProductPriceResponse {
+  currencyCode: String
+  endDate: LocalDate
+  listPrice: String
+  netPrice: String
+  priceId: Long
+  startDate: LocalDate
+  unitPrice: String
+}
+
+type ProductRelation {
+  code: String
+  relationType: String
+}
+
+input ProductRelationInput {
+  relatedBrandCode: String
+  relatedProductCode: String
+  relationType: String
+}
+
+type PublicationGroup {
+  category: String
+  code: String
+  createdAt: LocalDateTime
+  createdBy: String
+  indexType: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  publicScope: String
+  publicationCode: String
+  status: String
+  type: String
+}
+
+type PublicationGroupIntl {
+  description: String
+  language: String
+  name: String
+}
+
+type PublicationGroupItem {
+  category: String
+  code: String
+  createdAt: LocalDateTime
+  createdBy: String
+  indexType: String
+  intls: [PublicationGroupIntl]
+  metadata: [PublicationGroupMetadata]
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  publicScope: String
+  publicationCode: String
+  status: String
+  type: String
+}
+
+type PublicationGroupMetadata {
+  code: String
+  createdAt: LocalDateTime
+  createdBy: String
+  endRange: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  orderSequence: Int
+  prefixValue: String
+  startRange: String
+  suffixValue: String
+  type: String
+  value: String
+}
+
+type PublicationIntl {
+  description: String
+  language: String
+  name: String
+}
+
+input PublicationIntlInput {
+  description: String
+  language: String
+  name: String
+}
+
+type PublicationItemResponse {
+  code: String
+  contentFileUri: String
+  contentFileUriPresignURL: String
+  coverPageUri: String
+  coverPageUriPresignURL: String
+  createdAt: LocalDateTime
+  createdBy: String
+  fileSize: Int
+  fileUri: String
+  fileUriPresignURL: String
+  group: PublicationGroupItem
+  indexFileUri: String
+  indexFileUriData: String
+  itemFileName: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+}
+
+type PublicationMetadata {
+  code: String
+  createdAt: LocalDateTime
+  createdBy: String
+  endRange: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  orderSequence: Int
+  prefixValue: String
+  startRange: String
+  suffixValue: String
+  type: String
+  value: String
+}
+
+input PublicationMetadataInput {
+  code: String
+  endRange: String
+  orderSequence: Int
+  prefixValue: String
+  startRange: String
+  suffixValue: String
+  type: String
+  value: String
+}
+
+type PublicationResponse {
+  category: String
+  code: String
+  coverpageFileName: String
+  coverpageFileUri: String
+  coverpageUri: String
+  createdAt: LocalDateTime
+  createdBy: String
+  errorFileUri: String
+  indexFileType: String
+  indexFileUri: String
+  indexType: String
+  indexUri: String
+  intls: [PublicationIntl]
+  metadata: [PublicationMetadata]
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  publicScope: String
+  publicationGroup: PublicationGroup
+  publicationSize: Int
+  replaceFile: String
+  source: String
+  sourceFileName: String
+  sourceFileUri: String
+  sourceUri: String
+  status: String
+  type: String
+}
+
+type Query {
+  """ To retrieve a knowledge publication by item code"""
+  knowledgeByItemCode(code: String!): PublicationItemResponse
+
+  """ To retrieve a knowledge publication by publication code"""
+  knowledgeByPublicationCode(code: String!): PublicationResponse
+
+  """ To retrieve a knowledge publication by publication code and group code
+  """
+  knowledgePublicationItemsByGroupCode(code: String!, group: String!): PublicationResponse
+
+  """ To get presign URL for upload file"""
+  presignURLForUpload(fileName: String!): PreSignURLResponse
+
+  """ To retrieve product category comment by id"""
+  CommentByCategoryCommentId(id: Int): ProductCategoryCommentResponse
+
+  """ To retrieve product category comments by code"""
+  CommentsByProductCategoryCode(code: String!): [ProductCategoryCommentResponse]
+
+  """ To retrieve product category Attachment by id"""
+  attachmentByCategoryAttachmentId(id: Int): ProductCategoryAttachmentResponse
+
+  """ To retrieve product category Attachments by code"""
+  attachmentsByProductCategoryCode(code: String!): [ProductCategoryAttachmentResponse]
+
+  """ To retrieve a brand by code"""
+  brandByCode(code: String!): Brand
+
+  """ To retrieve a businessEntity"""
+  businessEntityByCodeAndType(code: String!, type: String!): BusinessEntityResponse
+
+  """ To retrieve a Contact by BusinessEntity Code, Type and Contact Code"""
+  contactByEntityCodeAndTypeAndCode(code: String!, entityCode: String!, type: String!): ContactResponse
+
+  """ To retrieve all Locations by BusinessEntity Code, Type"""
+  contactsByEntityCodeAndType(entityCode: String!, type: String!): [ContactResponse]
+
+  """ To retrieve a Location by BusinessEntity Code, Type and Location Code"""
+  locationByEntityCodeAndTypeAndCode(code: String!, entityCode: String!, type: String!): LocationResponse
+
+  """ To retrieve all Locations by BusinessEntity Code, Type"""
+  locationsByEntityCodeAndType(entityCode: String!, type: String!): [LocationResponse]
+
+  """ To retrieve a part attachment by attachment Id"""
+  partAttachmentByID(id: Long!): PartAttachmentResponse
+
+  """ To retrieve a part attachments by part code"""
+  partAttachmentsByPartCode(code: String!): [PartAttachmentResponse]
+
+  """ To retrieve a part attribute by id"""
+  partAttributeById(id: Long!): PartAttributeResponse
+
+  """ To retrieve a part attributes by code"""
+  partAttributesByPartCode(code: String!): [PartAttributeResponse]
+
+  """ To retrieve a part price by price Id"""
+  partPriceByID(id: Long!): PartPriceResponse
+
+  """ To retrieve a part prices by part code"""
+  partPricesByPartCode(code: String!): [PartPriceResponse]
+
+  """ To retrieve a part prices by part , currency and date"""
+  partPricesByPartIdAndCurrencyAndDate(code: String!, currency: String!, date: LocalDate!): [PartPriceResponse]
+
+  """ To retrieve product category Attachment by id"""
+  productAttachmentByProductAttachmentId(id: Long!): ProductAttachmentResponse
+
+  """ To retrieve product Attachments by brand and productCode"""
+  productAttachmentsByBrandAndProductCode(brand: String!, productCode: String!): [ProductAttachmentResponse]
+
+  """ To retrieve a product by code and brand code"""
+  productByCodeAndBrand(brandCode: String, code: String!): Product
+
+  """ To retrieve a product category by code"""
+  productCategoryByCode(code: String!): ProductCategoryResponse
+
+  """ To retrieve product price by id"""
+  productPriceByProductPriceId(id: Long!): ProductPriceResponse
+
+  """ To retrieve product Prices by brand and productCode"""
+  productPricesByBrandAndProductCode(brand: String!, productCode: String!): [ProductPriceResponse]
+
+  """ To retrieve product prices by productId and currency and date"""
+  productPricesByProductIdAndCurrencyAndDate(currency: String!, date: LocalDate!, id: Long!): [ProductPriceResponse]
+
+  """ To retrieve a catalog"""
+  catalogByCode(code: String!): CatalogResponse
+
+  """ To retrieve a catalog item by CatalogCode and ItemCode"""
+  catalogItemByCatalogCodeAndItem(catalogCode: String!, code: String!): CatalogItemResponse
+
+  """ To retrieve an catalog by Criteria and Language"""
+  catalogsByCodeAndLang(criteria: [CatalogCriteriaInput!]!, language: String!): [CatalogResponse]
+
+  """ To retrieve all  countries"""
+  countries: [CountryResponse]
+
+  """ To retrieve a country by code"""
+  countryByCode(code: String!): CountryResponse
+
+  """ To retrieve an application label by Code"""
+  labelByCode(code: String!): ApplicationLabelResponse
+
+  """ To retrieve an application label by Criteria and Language"""
+  labelsByCodeAndLang(criteria: [ApplicationLabelCriteriaInput!]!, language: String!): [ApplicationLabelResponse]
+
+  """ To retrieve an EntityLink by code"""
+  linkByCode(code: String!): EntityLinkResponse
+
+  """ To retrieve an EntityList by code"""
+  listByCode(code: String!): EntityListResponse
+
+  """ To retrieve an locale by code"""
+  localeByCode(code: String!): LocaleResponse
+
+  """ To retrieve all locales"""
+  locales: [LocaleResponse]
+
+  """ To retrieve an application message"""
+  messageByCode(code: String): ApplicationMessage
+
+  """ To retrieve an application label by Criteria and Language"""
+  messagesByCodeAndLang(criteria: [ApplicationMessageCriteriaInput!]!, language: String!): [ApplicationMessage]
+
+  """ To retrieve a state by country code and state code"""
+  stateByCountryAndCode(code: String!, country: String!): StateResponse
+
+  """ To retrieve all states by country"""
+  statesByCountry(country: String!): [StateResponse]
+
+  """ To retrieve a Xref"""
+  xrefById(id: Int): EntityXrefResponse
+}
+
+input StateInput {
+  active: String
+  code: String!
+  intls: [StateIntlInput]
+}
+
+type StateIntl {
+  active: String
+  language: String
+  name: String
+}
+
+input StateIntlInput {
+  active: String
+  language: String!
+  name: String!
+}
+
+type StateResponse {
+  active: String
+  code: String!
+  intls: [StateIntl]
+}
+
+input UpdateApplicationLabelInput {
+  active: String
+  application: String
+  feature: String
+  intls: [ApplicationLabelIntlInput]
+}
+
+input UpdateBusinessEntityInput {
+  attribute: AttributeInput
+  brands: [BusinessEntityBrandInput]
+  intls: [BusinessEntityIntlInput]
+  parentBECode: String
+  parentBEType: String
+  reference: String
+  status: String
+  subType: String
+}
+
+input UpdateCatalogInput {
+  active: String
+  application: String
+  feature: String
+
+  """ list of value form the catalog "CatalogSortOptions"
+  """
+  sortBy: String
+}
+
+input UpdateCatalogItemInput {
+  active: String
+  defaultEntry: String
+  feature: String
+  intls: [CatalogItemIntlInput]
+  orderSequence: Int
+  serviceDefaultEntry: String
+}
+
+input UpdateContactInput {
+  active: String
+  alternateEmail1: String
+  alternateEmail2: String
+  alternatePhone1: String
+  alternatePhone1Ext: String
+  alternatePhone2: String
+  alternatePhone2Ext: String
+  alternatePhone3: String
+  alternatePhone3Ext: String
+  certificationInfo: String
+  contactMethod: String
+  department: String
+  email: String
+  firstName: String
+  lastName: String
+  loginId: String
+  middleName: String
+  phone: String
+  phoneExt: String
+  titleCode: String
+  type: String
+}
+
+input UpdateEntityLinkRequest {
+  active: String
+  category: String
+  definitions: [EntityLinkDefinition]
+  externalComment: EntityLinkComment
+  internalComment: EntityLinkComment
+  priority: String
+  subCategory: String
+  subType: String
+  type: String
+}
+
+input UpdateEntityListRequest {
+  attributes: [EntityListAttribute]
+  category: String
+  code: String
+  externalComment: EntityListComment
+  internalComment: EntityListComment
+  type: String
+}
+
+input updateLocaleInput {
+  active: String
+  name: String!
+}
+
+input UpdateLocationInput {
+  address1: String
+  address2: String
+  address3: String
+  address4: String
+  alternateEmail1: String
+  alternateEmail2: String
+  alternatePhone1: String
+  alternatePhone1Ext: String
+  alternatePhone2: String
+  alternatePhone2Ext: String
+  alternatePhone3: String
+  alternatePhone3Ext: String
+  city: String
+  country: String
+  county: String
+  email: String
+  language: String
+  latitude: String
+  longitude: String
+  phone: String
+  phoneExt: String
+  preferred: String
+  state: String
+  type: String
+  url: String
+  zip: String
+  zipExt: String
+}
+
+input UpdateProductAttachmentInput {
+  language: String
+  name: String
+  size: Int
+  type: String
+  url: String
+}
+
+input UpdateProductCategoryAttachmentInput {
+  language: String
+  name: String
+  size: Int
+  type: String
+  url: String
+}
+
+input UpdateProductCategoryCommentInput {
+  comment: String
+  type: String
+}
+
+input UpdateProductCategoryInput {
+  intls: [CreateProductCategoryIntlInput]
+  relations: [CreateProductCategoryRelationInput]
+  status: String
+}
+
+type UpdateProductCategoryResponse {
+  code: String!
+  intls: [ProductCategoryIntlResponse]
+  relations: [ProductCategoryRelationResponse]
+  status: String
+}
+
+input UpdateProductPriceInput {
+  currency: String
+  endDate: LocalDate
+  listPrice: String
+  netPrice: String
+  startDate: LocalDate
+  unitPrice: String
+}
+
+input UpdatePublicationGroupInput {
+  category: String
+  code: String
+  createdAt: LocalDateTime
+  createdBy: String
+  indexType: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  publicScope: String
+  publicationCode: String
+  status: String
+  type: String
+}
+
+input UpdatePublicationInput {
+  category: String
+  code: String
+  coverpageFileName: String
+  coverpageFileUri: String
+  coverpageUri: String
+  createdAt: LocalDateTime
+  createdBy: String
+  group: UpdatePublicationGroupInput
+  indexFileType: String
+  indexFileUri: String
+  indexType: String
+  indexUri: String
+  intls: [UpdatePublicationIntlInput]
+  metadata: [UpdatePublicationMetadataInput]
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  publicScope: String
+  publicationSize: Int
+  replaceFile: String
+  source: String
+  sourceFileName: String
+  sourceFileUri: String
+  sourceUri: String
+  status: String
+  type: String
+}
+
+input UpdatePublicationIntlInput {
+  description: String
+  language: String
+  name: String
+}
+
+input UpdatePublicationMetadataInput {
+  code: String
+  createdAt: LocalDateTime
+  createdBy: String
+  endRange: String
+  modifiedAt: LocalDateTime
+  modifiedBy: String
+  orderSequence: Int
+  prefixValue: String
+  startRange: String
+  suffixValue: String
+  type: String
+  value: String
+}
+
+type UpdatePublicationResponse {
+  status: String
+}
+
+type XrefResultResponse {
+  code: String
+  defaultEntry: String
+  name: String
+  serviceDefaultEntry: String
+}
