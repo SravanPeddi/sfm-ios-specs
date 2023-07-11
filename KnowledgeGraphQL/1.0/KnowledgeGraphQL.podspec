@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.name         = "KnowledgeGraphQL"
   spec.version      = "0.0.1"
   spec.summary      = "A short description of KnowledgeGraphQL."
-  #spec.source_files = 'TestKit/**/*'
+  spec.source_files = 'TestKit/**/*.swift', 'TestKit/**/*.graphql'
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -91,7 +91,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  #spec.source_files  = "TestKit", "TestKit/**/*.{h,m}"
+  spec.source_files  = "TestKit", "TestKit/**/*.{h,m}"
   #spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
@@ -106,7 +106,8 @@ Pod::Spec.new do |spec|
   #
 
   # spec.resource  = "icon.png"
-  spec.resources = "Resources/**/*.{png,xib,json,plist,ttf,xcassets,sqlite,bundle,js,graphql,swift,lproj}"
+  #spec.resources = "Resources/**/*.{png,xib,json,plist,ttf,xcassets,sqlite,bundle,js,graphql,swift,lproj}"
+  spec.resources = 'TestKit/Resources/*'
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
