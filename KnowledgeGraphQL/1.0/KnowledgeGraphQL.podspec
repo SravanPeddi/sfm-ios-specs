@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.name         = "KnowledgeGraphQL"
   spec.version      = "0.0.1"
   spec.summary      = "A short description of KnowledgeGraphQL."
-  spec.source_files = 'Sources/**/*.swift', 'Sources/**/*.graphql'
+  #spec.source_files = 'TestKit/**/*.swift', 'Sources/**/*.graphql'
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -106,7 +106,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.resource  = "icon.png"
-  #spec.resources = "KnowledgeGraphQL/**/*.{png,xib,json,plist,ttf,xcassets,sqlite,bundle,js}"
+  spec.resources = "TestKit/**/*.{png,xib,json,plist,ttf,xcassets,sqlite,bundle,js}"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
