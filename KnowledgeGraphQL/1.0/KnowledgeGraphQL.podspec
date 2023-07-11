@@ -105,7 +105,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.resource  = "icon.png"
-  # spec.resources = "Resources/*.png"
+  spec.resources = "Resources/**/*.{png,xib,json,plist,ttf,xcassets,sqlite,bundle,js}"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
