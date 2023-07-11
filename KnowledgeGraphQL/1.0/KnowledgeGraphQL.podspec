@@ -79,7 +79,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://EXAMPLE/KnowledgeGraphQL.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/SravanPeddi/GraphQL-NetworkManager-iOS.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
