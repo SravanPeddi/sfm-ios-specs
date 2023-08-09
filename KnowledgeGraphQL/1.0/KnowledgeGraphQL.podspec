@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "KnowledgeGraphQL"
-  spec.version      = "0.0.1"
+  spec.version      = "1.0.0"
   spec.summary      = "A short description of KnowledgeGraphQL."
   #spec.source_files = 'TestKit/**/*.swift', 'TestKit/**/*.graphql'
 
@@ -134,6 +134,6 @@ Pod::Spec.new do |spec|
    spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  spec.dependency "Apollo"
+  spec.dependency "Apollo", '1.3.0'
 
 end
