@@ -54,5 +54,6 @@ s.author           = { 'Sravan' => 'sravan.peddi@syncron.com' }
     s.dependency 'SideMenuSwift' # https://github.com/kukushi/SideMenu
     s.dependency 'IQKeyboardManagerSwift', '6.3.0'
     s.dependency 'JWTDecode' # https://github.com/auth0/JWTDecode.swift
+    s.dependency 'KnowledgeGraphQL'
 
 end
